@@ -21,7 +21,27 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+
+        <?php 
+          wp_nav_menu( array(
+            'theme_location'  => 'nav-top',
+            'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
+            'container'       => 'ul',
+            // 'container_class' => 'collapse navbar-collapse',
+            // 'container_id'    => 'bs-example-navbar-collapse-1',
+            'menu_class'      => 'navbar-nav ml-auto',
+            'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+            'walker'          => new WP_Bootstrap_Navwalker(),
+          ) );
+
+          // wp_nav_menu( array(
+          //   'theme_location' => 'nav-top',
+          //   'container'      => 'ul',
+          //   'menu_class'     => 'navbar-nav ml-auto'
+          // ));
+        
+        ?>
+        <!-- <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="about.html">About</a>
           </li>
@@ -65,7 +85,7 @@
               <a class="dropdown-item" href="pricing.html">Pricing Table</a>
             </div>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </nav>

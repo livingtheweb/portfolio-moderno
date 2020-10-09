@@ -1,23 +1,55 @@
   
   <?php get_header(); ?>
 
-  <header class="jumbotron">
-    <h2 class="text-center font-weight-light display-4"><?php bloginfo('title'); ?></h2>
-    <p class="text-center font-weight-bolder"><?php bloginfo('description'); ?></p>
-  </header>
-
+  <div class="mt-3"></div>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8">
-        <h2>Contenido principal <small>Index.php</small></h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, quaerat quia. Beatae aliquam, reprehenderit sint officia quidem unde, molestiae sed facere ratione repellendus quas, ab quia excepturi magni corrupti nemo?</p>
-        <p>Tranquilos, estamos usando la versión <?php bloginfo('version');  ?></p>
+
+   
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <!-- The_Loop -->
+        <?php if(have_posts() ): while(have_posts()): the_post() ?>
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          <!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> -->
+          <?php the_post_thumbnail(
+            'large', 
+            array(
+              'class' => 'img-fluid'
+            )); ?>
+          <div class="card-body">
+            <h2 class="card-title"><?php the_title(); ?></h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on January 1, 2017 by
+            <a href="#">Start Bootstrap</a>
+          </div>
+        </div>
+
+        <?php endwhile; ?>
+        <!-- Paginación -->
+
+        <?php else: ?>
+        <!-- Not post found -->
+        <?php get_template_part('templates-parts/content','none'); ?>
+
+        <?php endif; ?>
+
+        <?php wp_reset_postdata(); ?>
+
+
+        
       </div>
-      <div class="col-lg-4">
+      <div class="col-md-4">
         <?php get_sidebar(); ?>
       </div>
-    </div>
-  </div>
+    </div> <!-- /.row -->
+  </div> <!-- /.container -->
 
 
-<?php get_footer(); ?>
+  <?php get_footer(); ?>

@@ -15,6 +15,27 @@
     echo $fecha;
   }
 
+
+/**
+ * Register Custom Navigation Walker
+ * Compatibilizar al 100% WordPress con Bootstrap
+ */
+function register_navwalker(){
+	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
+
+// Crear el menú
+function register_my_menus() {
+
+  register_nav_menu( 
+    'nav-top', __('Menú principal')
+  );
+
+}
+add_action('init','register_my_menus');
+
+
 // Cargar estilos de manera dinámica
 function mariano_styles_scripts() {
   
