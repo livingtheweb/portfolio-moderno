@@ -14,7 +14,7 @@
     <a href="#/" class="navbar-brand">LTW!</a>
   </nav> -->
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg bg-info navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="<?php echo home_url(); ?>">LTW!</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
