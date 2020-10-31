@@ -47,21 +47,42 @@
         <h3 class="text-center py-2 bg-dark" style="color:#fff">Noticias</h3>
       </div>
     
+       <!-- The_Loop -->
+       <?php 
+        
+        // Noticias, cat 8
+        $args = array (
+          'cat'            => 8,
+          'posts_per_page' => 3
+        );
+
+        $filter_posts = new Wp_Query($args);      
+      
+      if( $filter_posts -> have_posts() ): 
+      while($filter_posts -> have_posts()): 
+        $filter_posts -> the_post() ?>
+
       <div class="col-md-4">
-        <h2 class="text-center">Noticia 01</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam voluptas explicabo iure voluptatem distinctio esse minima</p>
-        <img src="<?php echo site_url(); ?>/wp-content/uploads/2020/10/Tras-los-reclamos-vecinales-Vialidad-Provincial-trabajo-en-la-traza-de-la-Ruta-190-1-696x650-1.jpg" class="img-fluid img-thumbnail" alt="">
+        <h2 class="text-center">
+          <a href="<?php the_permalink(); ?>">
+           <?php the_title() ?>
+          </a>
+        </h2>
+        <?php the_excerpt(); ?>
+        <?php the_post_thumbnail('large', array('class' => 'img-fluid')) ?>
+        <!-- <img src="<?php echo site_url(); ?>/wp-content/uploads/2020/10/Tras-los-reclamos-vecinales-Vialidad-Provincial-trabajo-en-la-traza-de-la-Ruta-190-1-696x650-1.jpg" class="img-fluid img-thumbnail" alt=""> -->
       </div>
-      <div class="col-md-4">
-        <h2 class="text-center">Noticia 02</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam voluptas explicabo iure voluptatem distinctio esse minima</p>
-        <img src="<?php echo site_url(); ?>/wp-content/uploads/2020/10/Tras-los-reclamos-vecinales-Vialidad-Provincial-trabajo-en-la-traza-de-la-Ruta-190-1-696x650-1.jpg" class="img-fluid img-thumbnail" alt="">
-      </div>
-      <div class="col-md-4">
-        <h2 class="text-center">Noticia 03</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam voluptas explicabo iure voluptatem distinctio esse minima</p>
-        <img src="<?php echo site_url(); ?>/wp-content/uploads/2020/10/Tras-los-reclamos-vecinales-Vialidad-Provincial-trabajo-en-la-traza-de-la-Ruta-190-1-696x650-1.jpg" class="img-fluid img-thumbnail" alt="">
-      </div>
+
+      <?php endwhile; ?>
+      <!-- Paginación -->
+
+      <?php else: ?>
+      <!-- Not post found -->
+      <?php get_template_part('templates-parts/content','none'); ?>
+
+      <?php endif; ?>
+
+      <?php wp_reset_postdata(); ?>
      
     </div>
   </div> <!-- /.container -->

@@ -20,9 +20,22 @@
         <?php wp_reset_postdata(); ?>
      
     </div>
-    <div class="col-3">
-      <h3>Col-9</h3>
-    </div>
+
+    <?php 
+      
+      if ( is_page('cursos') ) {
+        echo '<div class="col-3">
+        <h3>Sidebar cursos</h3>
+      </div>';
+      } elseif ( is_page('talleres')) {
+        echo '<div class="col-3">
+        <h3>Sidebar talleres</h3>
+      </div>';
+      } else {
+        // 
+      }
+    ?>
+    
   </div>
 </div>
 

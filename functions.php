@@ -85,9 +85,30 @@ function mariano_styles_scripts() {
     true
   );
 
-
 }
 add_action('wp_enqueue_scripts','mariano_styles_scripts');
+
+// Crear nuestras áreas de widgets (regstramos widgets)
+function my_widgets() {
+
+  register_sidebar( array(
+    'id'            => 'sidebar-widgets',
+    'name'          => 'Widget sidebar',
+    'description'   =>'Contenido para el sidebar principal',
+    'before_widget' => '<div>',
+    'after_widget'  => '</div>'
+  ));
+  register_sidebar( array(
+    'id'            => 'banner-home',
+    'name'          => 'Banner home',
+    'description'   =>'1280x200',
+    'before_widget' => '<div>',
+    'after_widget'  => '</div>'
+  ));
+
+
+}
+add_action('init', 'my_widgets');
 
 
 

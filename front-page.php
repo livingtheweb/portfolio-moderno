@@ -177,7 +177,15 @@
     </div>
   </div>
   <!-- /.row -->
+  <div class="my-3"></div>
+  
+  <div class="row">
+    <div class="col-12">
+      <?php dynamic_sidebar('banner-home') ?>
+    </div>
+  </div>
 
+  <div class="my-3"></div>
   <!-- Features Section -->
   <div class="row">
     <div class="col-lg-6">

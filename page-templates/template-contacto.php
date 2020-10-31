@@ -25,7 +25,8 @@
   </div>
   <!-- Contact Details Column -->
   <div class="col-lg-4 mb-4">
-    <h3>Contact Details</h3>
+    <?php get_sidebar(); ?>
+    <!-- <h3>Contact Details</h3>
     <p>
       3481 Melrose Place
       <br>Beverly Hills, CA 90210
@@ -41,7 +42,7 @@
     </p>
     <p>
       <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
-    </p>
+    </p> -->
   </div>
 </div>
 <!-- /.row -->

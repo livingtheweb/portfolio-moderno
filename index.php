@@ -10,11 +10,24 @@
       <div class="col-md-8">
 
         <!-- The_Loop -->
-        <?php if(have_posts() ): while(have_posts()): the_post() ?>
+        <?php 
+        
+          // Noticias, cat 8
+          $args = array (
+            'cat'            => 8,
+            'posts_per_page' => 2
+          );
+
+          $filter_posts = new Wp_Query($args);
+
+        
+        
+        if( $filter_posts -> have_posts() ): 
+        while($filter_posts -> have_posts()): 
+          $filter_posts -> the_post() ?>
 
         <!-- Blog Post -->
-        <div class="card mb-4">
-          <!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> -->
+        <div class="card mb-4">      
           <?php the_post_thumbnail(
             'large', 
             array(
@@ -24,8 +37,7 @@
             <h2 class="card-title"> 
               <a href="<?php the_permalink(); ?>"> <?php the_title(); ?> </a>
             </h2>
-            <?php the_excerpt(); ?>
-            <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p> -->
+            <?php the_excerpt(); ?>            
             <a href="<?php the_permalink(); ?> " class="btn btn-primary">Ver más &rarr;</a>
           </div>
           <div class="card-footer text-muted">
@@ -50,7 +62,7 @@
         
       </div>
       <div class="col-md-4">
-        <?php get_sidebar(); ?>
+        <?php get_sidebar('blog'); ?>
       </div>
     </div> <!-- /.row -->
   </div> <!-- /.container -->
